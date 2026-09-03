@@ -3,6 +3,7 @@ name: Leret Mutkut
 avatarUrl: https://github.com/Leret7777.png
 title: Commercial Intelligence Specialist
 linkedinUrl: https://www.linkedin.com/in/leretmutkut
+email: leret.2.mutkut@bt.com
 companyDomain: bt.com
 ---
 
