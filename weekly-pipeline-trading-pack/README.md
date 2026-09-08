@@ -1,57 +1,37 @@
-# Commercial GTM Agent Skills
+# Weekly pipeline trading pack
 
-Skills for the commercial side of go-to-market — pipeline, trading, variance, pricing and base management — written for the teams that work from BI snapshots and spreadsheets rather than a live sales stack.
+An agent skill for the weekly trading cycle: a fresh pipeline snapshot has landed, and someone has to turn it into a verdict before the trading call.
 
-Most go-to-market skills assume a stack: a CRM, an enrichment vendor, a sequencer, a webhook firing on a signal. Large commercial teams don't work that way. They get a weekly export from a data team, open it, and have to turn it into a decision before the trading call. These skills are written for that reality.
+## What it does
 
-Each skill accepts its inputs however the user has them — typed figures, pasted text, an uploaded file, or a live connection to the source. None of them assume a named tool.
+Takes a weekly pipeline export plus orders and target figures and turns them into an editable KPI-and-commentary pack: whether the week traded green, what moved in the funnel week on week, and when the current pipeline is expected to land as orders. It reads pipeline cover against target, the top five won and lost, ARPU and win rate across a chosen cut, and the billing expectation profile, with commentary against each number.
 
-## Who these are for
+Orders against target decide green; pipeline growth never does. Cover inflated by deals with distant or missing billing dates is not cover, and treating pipeline growth as good news is the most common error the pack is built to avoid.
 
-Commercial trading, planning and performance, CVM, pricing operations, sales operations and commercial finance. The analyst seat: the person who receives the data rather than the person who creates it.
+## What it deliberately does not do
 
-## Skills
+It does not declare a green week on pipeline movement alone. Orders booked against the orders target are the only thing that decides green, and a growing funnel behind a missed orders number is still a missed week.
 
-| Skill | What it does |
-|---|---|
-| [weekly-pipeline-trading-pack](skills/leret-mutkut/weekly-pipeline-trading-pack) | Turns a weekly pipeline export plus orders and target figures into an editable KPI-and-commentary pack: did the week trade green, what moved, and when the pipeline lands as orders. |
+Where an input is missing — most often the previous week's snapshot — it runs a point-in-time read and states plainly that week-on-week movement could not be assessed, rather than filling the gap. It never guesses a target or an orders figure.
 
-Planned:
+## Inputs
 
-- **Variance explanation** — splits a gap against plan into price, volume, mix, churn and timing.
-- **Discount check** — benchmarks a discount request against comparable closed deals.
+Open opportunities, one line each with value, stage, expected billing date, product, sector, segment and owner, and the orders booked and orders target for the period are required. The orders figures usually come from finance rather than the CRM. The previous week's snapshot is strongly wanted, because movement is the point of the pack; without it the pack is a point-in-time read only.
 
-## Installing
+Inputs are accepted however the user has them — typed figures, pasted text, an uploaded file, or a live connection. No tool is named anywhere, because the reader's stack is unknown.
 
-These are plain `SKILL.md` files. Any agent that reads skills can use them.
+## Output
 
-```bash
-# everything in this library
-npx skills add Leret7777/commercial-gtm-agent-skills
+An editable KPI-and-commentary pack, HTML by default since it edits and converts cleanly to PDF or image. The first line gives the green or not-green verdict; KPIs and written commentary follow across the chosen cut.
 
-# a single skill
-npx skills add Leret7777/commercial-gtm-agent-skills --skill weekly-pipeline-trading-pack
-```
+## Who it's for
 
-Add `-a claude-code`, `-a cursor` or another agent flag to target a specific tool.
+Commercial trading, planning, performance and CVM teams working from a pipeline snapshot. The analyst seat: the person who receives the data rather than the person who creates it.
 
-If you can't run a terminal, open the skill folder above and copy `SKILL.md` into your agent's skills directory by hand. That works just as well.
+## Using it
 
-## Layout
-
-```
-skills/
-└── <author-slug>/
-    ├── author.md
-    └── <skill-name>/
-        ├── SKILL.md
-        └── references/        (optional, deeper material)
-```
-
-This mirrors the layout used by [gtmskills.com](https://gtmskills.com), so a skill written here can be contributed there without restructuring.
+Copy `skills/leret-mutkut/weekly-pipeline-trading-pack/SKILL.md` into your agent's skills directory. It is a plain markdown file — any agent that reads skills can use it.
 
 ## Licence
 
-MIT. Use, copy, modify and redistribute freely.
-
-These skills encode method, not any employer's commercial data. No thresholds, margin floors or internal figures appear in them.
+MIT. Encodes method, not any employer's commercial data. No thresholds, margin floors or internal figures appear in it.
