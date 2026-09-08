@@ -13,6 +13,7 @@ licence, and its own README. Nothing here assumes a particular vendor or tool.
 | Folder | What it does |
 |---|---|
 | [`weekly-pipeline-trading-pack`](weekly-pipeline-trading-pack) | Turns a weekly pipeline export plus orders and target figures into an editable KPI-and-commentary trading pack: did the week trade green, what moved, and when the pipeline lands as orders. |
+| [`revenue-variance-review`](revenue-variance-review) | Locates a billed revenue gap against forecast, attributes it to slippage, late billing, work in progress, thin cover or seasonality, checks margin alongside it, and states what is left to cover. |
 
 ## Why it exists
 
@@ -34,8 +35,8 @@ the data rather than the person who creates it.
 
 ## Layout
 
-Each skill lives in its own folder, laid out so it can be contributed onward to
-[gtmskills.com](https://gtmskills.com) without restructuring:
+Each skill lives in its own folder, self-contained so it can be lifted out and
+used on its own:
 
 ```
 <skill-name>/
