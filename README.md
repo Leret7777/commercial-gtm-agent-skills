@@ -6,14 +6,13 @@ variance, pricing and base management.
 ## What this is
 
 A small, growing library of `SKILL.md` files that any agent capable of reading
-skills can use. Each skill is a self-contained package in its own top-level
-folder, holding everything it needs: the skill itself, an author profile, a
-licence, and its own README. Nothing here assumes a particular vendor or tool.
+skills can use. Each skill is a single self-contained file. Nothing here assumes
+a particular vendor or tool.
 
-| Folder | What it does |
+| Skill | What it does |
 |---|---|
-| [`weekly-pipeline-trading-pack`](weekly-pipeline-trading-pack) | Turns a weekly pipeline export plus orders and target figures into an editable KPI-and-commentary trading pack: did the week trade green, what moved, and when the pipeline lands as orders. |
-| [`revenue-variance-review`](revenue-variance-review) | Locates a billed revenue gap against forecast, attributes it to slippage, late billing, work in progress, thin cover or seasonality, checks margin alongside it, and states what is left to cover. |
+| [`weekly-pipeline-trading-pack`](skills/weekly-pipeline-trading-pack/SKILL.md) | Turns a weekly pipeline export plus orders and target figures into an editable KPI-and-commentary trading pack: did the week trade green, what moved, and when the pipeline lands as orders. |
+| [`revenue-variance-review`](skills/revenue-variance-review/SKILL.md) | Locates a billed revenue gap against forecast, attributes it to slippage, late billing, work in progress, thin cover or seasonality, checks margin alongside it, and states what is left to cover. |
 
 ## Why it exists
 
@@ -33,25 +32,30 @@ Commercial trading, planning and performance, CVM, pricing operations, sales
 operations and commercial finance. The analyst seat: the person who receives
 the data rather than the person who creates it.
 
+## Using a skill
+
+Each skill is a plain markdown file. Open the one you want from the table above
+and copy its `SKILL.md` into your agent's skills directory — any agent that
+reads skills can use it. No installation, account or tool is required.
+
 ## Layout
 
-Each skill lives in its own folder, self-contained so it can be lifted out and
-used on its own:
-
 ```
-<skill-name>/
-├── README.md
-├── CONTRIBUTING.md
-├── LICENSE
-└── skills/
-    └── <author-slug>/
-        ├── author.md
-        └── <skill-name>/
-            ├── SKILL.md
-            └── references/     (optional, deeper material)
+skills/
+└── <skill-name>/
+    └── SKILL.md        (references/ alongside it, if a skill needs deeper material)
 ```
 
-Open a skill's folder for its own README and full detail.
+## Author
+
+**Leret Mutkut** — commercial data and analytics in enterprise telecoms, across
+planning, performance, trading, CVM and pricing operations. Previously a product
+manager and product trader on a large ITS and cloud portfolio, so these skills
+are written from both sides of the number: the person producing the commercial
+view and the people arguing about it on the trading call. They're written for
+teams that work from BI snapshots and spreadsheets rather than a live sales
+stack — the analysts who receive a weekly export and have to turn it into a
+decision by Thursday.
 
 ## Licence
 
