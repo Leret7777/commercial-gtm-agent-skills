@@ -1,4 +1,4 @@
-# Commercial GTM Agent Skills
+# Commercial Agent Skills
 
 Agent skills for the commercial side of go-to-market — pipeline, trading,
 variance, pricing and base management.
